@@ -1,0 +1,8 @@
+params = list(classificador.parameters())
+pesos0 = params[0]
+bias0 = params[1]
+previsores = classificador.forward(previsores_teste)
+previsores = np.array(previsores > 0.5)
+previsores
+taxa_acerto = accuracy_score(classe_teste, previsores)
+taxa_acerto
