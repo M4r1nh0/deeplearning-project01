@@ -1,0 +1,19 @@
+np.random.seed(123)#semente geradora aleatoria, ele sempre terar os mesmos valores.
+torch.manual_seed(123)#sempre tera os mesmos resultados
+
+
+previsores = pd.read_csv('/content/entradas_breast.csv') #Previsores seria as caracteristicas
+classe = pd.read_csv('/content/saidas_breast.csv') #Serias as respostas!
+
+previsores.shape
+
+previsores_treinamento, previsores_teste, classe_treinamento, classe_teste = train_test_split(previsores, classe, test_size = 0.25)
+
+previsores_treinamento = torch.tensor(np.array(previsores_treinamento),dtype=torch.float)  ##tranformando de datafram pra torch
+
+classe_treinamento = torch.tensor(np.array(classe_treinamento), dtype=torch.float)
+
+dataset = torch.utils.data.TensorDataset(previsores_treinamento,classe_treinamento)
+
+train_loader = torch.utils.data.DataLoader(dataset, batch_size=10, shuffle=True) #Ele vai misturar os dados, ele vai calcular o erro pra esses 10 registro(batchsize) e ai ele vai de 10 em 10
+
