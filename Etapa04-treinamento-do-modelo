@@ -1,0 +1,18 @@
+for epoch in range(100):
+  running_loss = 0. #vai guardar os erros
+  
+  for data in train_loader:
+    inputs, labels = data #inputs são as entradas e os previsores e labels são os dados reais
+    optimizer.zero_grad() #zerou os valores acumulados
+
+    outputs = classificador(inputs) #classificador.forward(inputs) previsoes
+
+    loss = criterion(outputs, labels)# calculo do erro
+    loss.backward()#voltando
+    optimizer.step()
+
+    running_loss += loss.item()
+
+  print('Época %3d: perda %.5f' % (epoch+1, running_loss/len(train_loader)))
+    
+ 
