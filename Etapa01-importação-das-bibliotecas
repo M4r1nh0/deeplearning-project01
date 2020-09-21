@@ -1,0 +1,11 @@
+import pandas as pd #Para a importação da base de dados
+from sklearn.model_selection import train_test_split #divisão da base de dados em train and test
+import numpy as np #Para a definição dos vetores
+import seaborn as sns #Biblioteca grafica para a visualização
+from sklearn.metrics import confusion_matrix, accuracy_score  #Para gerar a matriz de cunfusão e a accuracy 
+
+import torch
+torch.__version__
+!pip install torch==1.4.0
+
+import torch.nn as nn #rede neural
